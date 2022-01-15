@@ -14,7 +14,7 @@ $Wcms->addListener('settings', function ($args) {
     $label->setAttribute('class', 'subTitle');
     $label->nodeValue = 'SEO';
 
-    $doc->getElementById('general')->insertBefore($label, $doc->getElementById('general')->lastChild);
+    $doc->getElementById('menu')->insertBefore($label, $doc->getElementById('menu')->lastChild);
 
     $wrapper = $doc->createElement('div');
     $wrapper->setAttribute('class', 'change');
@@ -38,7 +38,7 @@ $Wcms->addListener('settings', function ($args) {
 
     $wrapper->appendChild($form);
 
-    $doc->getElementById('general')->insertBefore($wrapper, $doc->getElementById('general')->lastChild);
+    $doc->getElementById('menu')->insertBefore($wrapper, $doc->getElementById('menu')->lastChild);
 
     $args[0] = preg_replace('~<(?:!DOCTYPE|/?(?:html|body))[^>]*>\s*~i', '', $doc->saveHTML());
 
@@ -93,8 +93,7 @@ TXT;
     file_put_contents(__DIR__ . '/../../sitemap.txt', $sitemap);
     file_put_contents(__DIR__ . '/../../robots.txt', $robots);
 
-    $Wcms->alert('success', 'Updated sitemap.');
-    $Wcms->redirect();
+    $Wcms->alert('success', 'Updated sitemap - robots.txt and sitemap.txt generated.');
 
     return $args;
 });
