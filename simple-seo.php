@@ -12,7 +12,7 @@ $Wcms->addListener('settings', function ($args) {
 
     $label = $doc->createElement('p');
     $label->setAttribute('class', 'subTitle');
-    $label->nodeValue = 'SEO';
+    $label->nodeValue = 'SEO (Search Engine Optimization)';
 
     $doc->getElementById('menu')->insertBefore($label, $doc->getElementById('menu')->lastChild);
 
@@ -26,7 +26,7 @@ $Wcms->addListener('settings', function ($args) {
     $button = $doc->createElement('input');
     $button->setAttribute('type', 'submit');
     $button->setAttribute('class', 'btn btn-info');
-    $button->setAttribute('value', 'Update Sitemap');
+    $button->setAttribute('value', 'Generate sitemap.txt and robots.txt');
     $button->setAttribute('name', 'sitemap');
     $form->appendChild($button);
 
