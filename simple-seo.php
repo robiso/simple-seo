@@ -6,7 +6,8 @@ $Wcms->addListener('settings', function ($args) {
     global $Wcms;
 
     $doc = new DOMDocument();
-    @$doc->loadHTML($args[0]);
+    @$doc->encoding = 'utf-8';
+    @$doc->loadHTML(mb_convert_encoding($args[0], 'HTML-ENTITIES', 'UTF-8'));
 
     /* Input element for header height */
 
