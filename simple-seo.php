@@ -52,7 +52,7 @@ $Wcms->addListener('settings', function ($args) {
     $output = [$BASE_URL];
 
     // CMS pages
-    foreach ($Wcms->get('config', 'menuItems') as $item) {
+	extractSlugs($item, $output, $BASE_URL);
         if ($item->visibility === 'hide') {
             continue;
         }
@@ -98,3 +98,14 @@ TXT;
 
     return $args;
 });
+
+function extractSlugs($item, &$output, $prevSlug): void
+{
+   if ($item->visibility === 'show') {
+      $output[] = $prevSlug . $item->slug;
+   }
+
+   foreach ($item->subpages as $subpage) {
+      extractSlugs($subpage, $output, $prevSlug . $item->slug . '/');
+   }
+}
