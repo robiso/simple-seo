@@ -52,11 +52,8 @@ $Wcms->addListener('settings', function ($args) {
     $output = [$BASE_URL];
 
     // CMS pages
-	extractSlugs($item, $output, $BASE_URL);
-        if ($item->visibility === 'hide') {
-            continue;
-        }
-        $output[] = $BASE_URL . $item->slug;
+    foreach ($Wcms->get('config', 'menuItems') as $item) {
+  	extractSlugs($item, $output, $BASE_URL);
     }
 
     // Blog pages
