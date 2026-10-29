@@ -98,6 +98,10 @@ TXT;
 
 function extractSlugs($item, &$output, $prevSlug): void
 {
+   if (!empty($item->private)) { // WonderCMS 3.7.0 private page: visitors get the 404 page, so it and its subpages stay out of the sitemap
+      return;
+   }
+
    if ($item->visibility === 'show') {
       $output[] = $prevSlug . $item->slug;
    }
