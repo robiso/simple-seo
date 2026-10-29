@@ -106,7 +106,7 @@ function extractSlugs($item, &$output, $prevSlug): void
       $output[] = $prevSlug . $item->slug;
    }
 
-   foreach ($item->subpages as $subpage) {
+   foreach ($item->subpages ?? [] as $subpage) {
       extractSlugs($subpage, $output, $prevSlug . $item->slug . '/');
    }
 }
